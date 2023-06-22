@@ -1,0 +1,17 @@
+default:
+    tags:
+      - shared
+
+variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+
+stages:
+    - build
+
+build:
+    stage: build
+    script:
+        - docker build -t adguard-home-builder:latest .
+
+    only:
+        - main
