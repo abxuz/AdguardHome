@@ -1,6 +1,6 @@
 FROM debian:latest
 
-ARG AdguardHomeVersion=v0.107.33
+ARG AdguardHomeVersion=v0.107.34
 ARG NodeVersion=v18.16.1
 ARG GoVersion=1.20.5
 
