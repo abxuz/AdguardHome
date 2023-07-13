@@ -1,11 +1,11 @@
 FROM debian:latest
 
-ARG AdguardHomeVersion=v0.107.34
+ARG AdguardHomeVersion=''
 ARG NodeVersion=v18.16.1
 ARG GoVersion=1.20.5
 
 RUN apt-get update && \
-    apt-get install -y git make wget gpg zip && \
+    apt-get install -y git make curl wget gpg zip && \
     apt-get clean
 
 RUN wget https://nodejs.org/dist/${NodeVersion}/node-${NodeVersion}-linux-x64.tar.gz && \
@@ -17,6 +17,5 @@ RUN wget https://nodejs.org/dist/${NodeVersion}/node-${NodeVersion}-linux-x64.ta
 
 WORKDIR /tmp
 COPY . .
-
 ENV AdguardHomeVersion=${AdguardHomeVersion}
-CMD "./build.sh" ${AdguardHomeVersion}
+CMD ./build.sh /build ${AdguardHomeVersion}
