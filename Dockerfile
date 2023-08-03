@@ -1,8 +1,8 @@
 FROM debian:latest
 
 ARG AdguardHomeVersion=''
-ARG NodeVersion=v18.16.1
-ARG GoVersion=1.20.6
+ARG NodeVersion=v18.17.0
+ARG GoVersion=1.20.7
 
 RUN apt-get update && \
     apt-get install -y git make curl wget gpg zip && \
