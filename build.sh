@@ -6,7 +6,7 @@ DESTDIR=$1
 VERSION=$2
 
 if [ -z $VERSION ]; then
-    VERSION=$(curl 'https://api.github.com/repos/AdguardTeam/AdGuardHome/releases/latest' 2>/dev/null | grep tag_name | awk -F'"' '{print $4}')
+    VERSION=$(curl https://github.com/AdguardTeam/AdGuardHome/releases/latest -v 2>&1 | grep tag | awk -F '/tag/' '{print $2}')
 fi
 
 export PATH="$PATH:/usr/local/go/bin/:/usr/local/node/bin"
