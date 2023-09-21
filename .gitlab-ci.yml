@@ -7,11 +7,20 @@ variables:
 
 stages:
     - build
+    - deploy
 
 build:
     stage: build
     script:
         - docker build -t adguard-home-builder:latest .
-
     only:
         - main
+
+depoly:
+    stage: deploy
+    environment:
+        name: production
+    rules:
+        - when: manual
+    script:
+        - echo "Deploy a builder image"
