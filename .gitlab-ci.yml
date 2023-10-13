@@ -11,7 +11,9 @@ stages:
 build:
     stage: build
     script:
-        - docker build -t adguard-home-builder:latest .
-
+        - docker run -it --rm -v .:/build --workdir /build debian:latest /build/build.sh
+    artifacts:
+        paths:
+          - "build/AdGuardHome_linux_amd64.tar.gz"
     only:
         - main
