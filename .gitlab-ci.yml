@@ -7,6 +7,7 @@ variables:
 
 stages:
     - build
+    - deploy
 
 build:
     stage: build
@@ -17,3 +18,12 @@ build:
           - "build/AdGuardHome_linux_amd64.tar.gz"
     only:
         - main
+
+depoly:
+    stage: deploy
+    environment:
+        name: production
+    rules:
+        - when: manual
+    script:
+        - echo "Deploy a builder image"
