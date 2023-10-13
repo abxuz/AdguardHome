@@ -2,26 +2,25 @@
 
 set -e
 
+apt-get update
+apt-get install -y git make curl wget gpg zip
+
 NodeVersion=v18.18.1
 GoVersion=1.21.3
-
 if [ -z $AdGuardHomeVersion ]; then
     AdGuardHomeVersion=$(curl https://github.com/AdguardTeam/AdGuardHome/releases/latest -v 2>&1 | grep tag | awk -F '/tag/' '{print $2}')
 fi
-
-apt-get update
-apt-get install -y git make curl wget gpg zip
 
 rm -rf build
 mkdir build
 cd build
 
-wget https://nodejs.org/dist/${NodeVersion}/node-${NodeVersion}-linux-x64.tar.gz
+wget https://nodejs.org/dist/${NodeVersion}/node-${NodeVersion}-linux-x64.tar.gz -q
 tar zxf node-${NodeVersion}-linux-x64.tar.gz -C /usr/local
 mv /usr/local/node-${NodeVersion}-linux-x64 /usr/local/node
 rm -f node-${NodeVersion}-linux-x64.tar.gz
 
-wget https://go.dev/dl/go${GoVersion}.linux-amd64.tar.gz
+wget https://go.dev/dl/go${GoVersion}.linux-amd64.tar.gz -q
 tar zxf go${GoVersion}.linux-amd64.tar.gz -C /usr/local
 rm -f go${GoVersion}.linux-amd64.tar.gz
 
