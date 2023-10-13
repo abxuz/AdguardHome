@@ -8,7 +8,7 @@ apt-get install -y git make curl wget gpg zip
 NodeVersion=v18.18.1
 GoVersion=1.21.3
 if [ -z $AdGuardHomeVersion ]; then
-    AdGuardHomeVersion=$(curl https://github.com/AdguardTeam/AdGuardHome/releases/latest -v 2>&1 | grep tag | awk -F '/tag/' '{print $2}')
+    AdGuardHomeVersion=$(curl https://github.com/AdguardTeam/AdGuardHome/releases/latest -v 2>&1 | grep tag | awk -F '/tag/' '{print $2}' | tr -d '\0-\31\177')
 fi
 
 rm -rf build
