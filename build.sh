@@ -2,7 +2,7 @@
 
 set -e
 
-NodeVersion=18.18.1
+NodeVersion=v18.18.1
 GoVersion=1.21.3
 
 if [ -z $AdGuardHomeVersion ]; then

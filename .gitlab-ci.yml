@@ -7,23 +7,13 @@ variables:
 
 stages:
     - build
-    - deploy
 
 build:
     stage: build
     script:
-        - docker run -it --rm -v .:/build --workdir /build debian:latest /build/build.sh
+        - docker run -i --rm -v .:/build --workdir /build debian:latest /build/build.sh
     artifacts:
         paths:
           - "build/AdGuardHome_linux_amd64.tar.gz"
     only:
         - main
-
-depoly:
-    stage: deploy
-    environment:
-        name: production
-    rules:
-        - when: manual
-    script:
-        - echo "Deploy a builder image"
